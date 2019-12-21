@@ -1,7 +1,7 @@
 //下载引入文件
 const express = require('express')//框架
 const ejs = require('ejs')//ejs
-
+const router = require('./router')//路径
 //创建服务器
 const app = express()
 
@@ -16,20 +16,9 @@ app.set('view engine', 'ejs')
 app.set('views','views')//默认模板路径
 
 
-//注册中间件
+// 注册中间件
 // app.use((req, res) => {
 //     // res.end('ok')
 //     // res.send('反间谍覅或多或少的')
 // })
-app.get('/', (req, res) => {
-    res.render('index',{})
-})
-.get('/add',(req,res)=>{
-    res.render('add',{})
-})
-.get('/edit',(req,res)=>{
-    res.render('edit',{})
-})
-.get('/info',(req,res)=>{
-    res.render('info',{})
-})
+app.use(router)
