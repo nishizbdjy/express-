@@ -36,5 +36,13 @@ module.exports = {
              if(err) return callback(err)
              callback(null,result)
         })
+    },
+    //删除英雄
+    shanchu(id,callback){
+     let sql = 'delete from wzry where id=?'//语句
+     connection.query(sql,[id],(err,result)=>{
+         if(err) return callback(false)
+         callback(true)
+     })
     }
 }

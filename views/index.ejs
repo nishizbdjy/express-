@@ -22,7 +22,7 @@
           <td>
             <a href="/info?id=<%=e.id%>">查看</a>
             <a href="/edit?id=<%=e.id%>">编辑</a>
-            <a href="javaScript:;"data-id="<%=e.id%>">删除</a>
+            <a href="javaScript:;"data-id="<%=e.id%>" class="shanchu">删除</a>
           </td>
         </tr>
         <% }) %>
@@ -30,3 +30,25 @@
     </table>
   </div>
   <%- include('./layout/footer.ejs')%>
+<script>
+$(function(){
+// 委托删除
+$('.table').on('click','.shanchu',function(){
+  let id = $(this).data('id')
+ $.ajax({
+   url : '/shanchu',
+   type: 'get',
+   data:{
+     id : id
+   },
+   success: function(res){
+     if(res.code === 200){
+    location.reload()//刷新页面
+     }
+   }
+ })
+})
+
+
+})//
+</script>

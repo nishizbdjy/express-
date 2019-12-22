@@ -24,4 +24,8 @@ router.get('/', (req, res) => {
 .get('/yingxiongxiangqing',(req,res)=>{
     con.yingxiongxiangqing(req,res)
 })
+//删除英雄
+.get('/shanchu',(req,res)=>{
+    con.shanchu(req,res)
+})
 module.exports = router//暴露 
