@@ -28,4 +28,8 @@ router.get('/', (req, res) => {
 .get('/shanchu',(req,res)=>{
     con.shanchu(req,res)
 })
+//修改英雄
+.post('/xiougai',(req,res)=>{
+    con.xiougai(req,res)
+})
 module.exports = router//暴露 

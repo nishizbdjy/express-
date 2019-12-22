@@ -1,54 +1,54 @@
 <%- include('./layout/header.ejs')%>
-  <div class="container hero-list">
-    <a class="btn btn-success pull-right" href="/add">添加英雄</a>
-    <table class="table table-hover">
-      <thead>
-        <th>编号</th>
-        <th>名称</th>
-        <th>性别</th>
-        <th>年龄</th>
-        <th>地址</th>
-        <th>创建时间</th>
-        <th>操作</th>
-      </thead>
-      <% data.forEach((e,i)=>{ %>
-        <tr>
-          <td><%= i +1 %></td>
-          <td><%= e.name %></td>
-          <td><%= e.gender%></td>
-          <td><%= e.age %></td>
-          <td><%= e.address%></td>
-          <td><%= e.date %></td>
-          <td>
-            <a href="/info?id=<%=e.id%>">查看</a>
-            <a href="/edit?id=<%=e.id%>">编辑</a>
-            <a href="javaScript:;"data-id="<%=e.id%>" class="shanchu">删除</a>
-          </td>
-        </tr>
-        <% }) %>
-      </tbody>
-    </table>
-  </div>
-  <%- include('./layout/footer.ejs')%>
+<div class="container hero-list">
+  <a class="btn btn-success pull-right" href="/add">添加英雄</a>
+  <table class="table table-hover">
+    <thead>
+      <th>编号</th>
+      <th>名称</th>
+      <th>性别</th>
+      <th>年龄</th>
+      <th>地址</th>
+      <th>创建时间</th>
+      <th>操作</th>
+    </thead>
+    <% data.forEach((e,i)=>{ %>
+    <tr>
+      <td><%= i +1 %></td>
+      <td><%= e.name %></td>
+      <td><%= e.gender%></td>
+      <td><%= e.age %></td>
+      <td><%= e.address%></td>
+      <td><%= e.date %></td>
+      <td>
+        <a href="/info?id=<%=e.id%>">查看</a>
+        <a href="/edit?id=<%=e.id%>">编辑</a>
+        <a href="javaScript:;" data-id="<%=e.id%>" class="shanchu">删除</a>
+      </td>
+    </tr>
+    <% }) %>
+    </tbody>
+  </table>
+</div>
+<%- include('./layout/footer.ejs')%>
 <script>
-$(function(){
-// 委托删除
-$('.table').on('click','.shanchu',function(){
-  let id = $(this).data('id')
- $.ajax({
-   url : '/shanchu',
-   type: 'get',
-   data:{
-     id : id
-   },
-   success: function(res){
-     if(res.code === 200){
-    location.reload()//刷新页面
-     }
-   }
- })
-})
-
-
-})//
+  $(function () {
+    // 委托删除
+    $('.table').on('click', '.shanchu', function () {
+      if (confirm('你确定要删除?')) {
+        let id = $(this).data('id')
+        $.ajax({
+          url: '/shanchu',
+          type: 'get',
+          data: {
+            id: id
+          },
+          success: function (res) {
+            if (res.code === 200) {
+              location.reload()//刷新页面
+            }
+          }
+        })
+      }
+    })
+  })//
 </script>

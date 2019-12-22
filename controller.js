@@ -66,4 +66,18 @@ module.exports = {
         })
         })
     },
+    //修改英雄
+    xiougai(req,res){
+        let shuju = req.body
+        zsgc.xiougai(shuju,(err)=>{
+         if(err) return res.json({
+             code : 201,
+             msg : '修改失败'
+         })
+         res.json({
+             code : 200,
+             msg :'修改成功'
+         })
+        })
+    }
 }

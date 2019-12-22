@@ -44,5 +44,16 @@ module.exports = {
          if(err) return callback(false)
          callback(true)
      })
+    },
+    //修改英雄
+    xiougai(shuju,callback){
+     let {id} =  shuju
+     delete shuju.id
+     shuju.date = moment().format('YYYY-MM-DD HH:mm:ss')//添加时间
+     let sql = 'update wzry set ? where id=?';
+     connection.query(sql,[shuju,id],(err,result)=>{
+         if(err) return callback(err)
+         callback(false)
+     })
     }
 }
