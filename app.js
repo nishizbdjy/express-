@@ -16,7 +16,7 @@ app.set('view engine', 'ejs')
 
 app.set('views','views')//默认模板路径
 
-app.use(bodyParser.urlencoded( {extended:false}))//post
+app.use(bodyParser.urlencoded( {extended:false}))//post请求 的内容
 
 // 注册中间件
 // app.use((req, res) => {

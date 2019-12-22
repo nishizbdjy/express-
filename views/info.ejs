@@ -1,10 +1,32 @@
 <%- include('./layout/header.ejs')%>
   <div class="container hero-list">
-    <p><strong>Id:</strong>{{id}}</p>
-    <p><strong>姓名:</strong>{{name}}</p>
-    <p><strong>性别:</strong>{{gender}}</p>
-    <p><strong>添加时间:</strong>{{ctime}}</p>
   </div>
 </body>
+<%- include('./layout/footer.ejs')%>
+<script type="text/html" id="xianshi">
+  <p><strong>Id:</strong>{{id}}</p>
+  <p><strong>姓名:</strong>{{name}}</p>
+  <p><strong>性别:</strong>{{gender}}</p>
+  <p><strong>年龄:</strong>{{age}}</p>
+  <p><strong>地址:</strong>{{address}}</p>
+  <p><strong>添加时间:</strong>{{date}}</p>
 
-</html>
+</script>
+<script>
+$(function(){
+ $.ajax({
+   url : 'yingxiongxiangqing',
+   type : 'get',
+   data : {
+     id : location.search.substring(4)
+   },
+   success : function(res){
+     console.log(res)
+     if(res.code == 200){
+       let html = template('xianshi',res.data[0])
+       $('.hero-list').html(html)
+     }
+   }
+ })
+})//
+</script>

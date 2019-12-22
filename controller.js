@@ -36,4 +36,19 @@ module.exports = {
             })
         })
     },
+     //单个英雄详情
+     yingxiongxiangqing(req,res){
+        let {id} = req.query//得到ID
+        zsgc.yingxiongxiangqing(id,(err,data)=>{
+            if(err) return res.json({
+                code : 201,
+                msg : '获取详情失败',
+            })
+            res.json({
+                code : 200,
+                msg : '获取详情成功',
+                data : data
+            })
+        })
+    }
 }

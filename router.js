@@ -20,4 +20,8 @@ router.get('/', (req, res) => {
 .post('/xinzeng',(req,res)=>{
     con.xinzeng(req,res)
 })
+//查看单个英雄
+.get('/yingxiongxiangqing',(req,res)=>{
+    con.yingxiongxiangqing(req,res)
+})
 module.exports = router//暴露 
