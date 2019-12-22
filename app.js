@@ -2,6 +2,7 @@
 const express = require('express')//框架
 const ejs = require('ejs')//ejs
 const router = require('./router')//路径
+const bodyParser = require('body-parser')//获取post请求的数据 模块
 //创建服务器
 const app = express()
 
@@ -15,6 +16,7 @@ app.set('view engine', 'ejs')
 
 app.set('views','views')//默认模板路径
 
+app.use(bodyParser.urlencoded( {extended:false}))//post
 
 // 注册中间件
 // app.use((req, res) => {

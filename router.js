@@ -16,5 +16,8 @@ router.get('/', (req, res) => {
 .get('/info',(req,res)=>{
     con.sohwInfo(req,res)
 })
-
+//新建英雄
+.post('/xinzeng',(req,res)=>{
+    con.xinzeng(req,res)
+})
 module.exports = router//暴露 
